@@ -1,0 +1,12 @@
+# PreViC — minimal pip requirements for the anonymous code release.
+# Covers the core algorithm (previc/core.py), the plug-in (previc/preload.py)
+# and the checks in tests/. Python >=3.10.
+
+torch>=2.1          # tensor ops; torch.linalg.{solve,pinv}, Generator, F.normalize, topk
+numpy>=1.24         # array utilities
+
+# --- Installed separately (NOT via this file) ---
+# previc/preload.py patches a host video VLM at runtime by replacing the function
+# that receives the post-projector visual tokens. Install that model from its own
+# repository and point PREVIC_HOOK_MODULE / PREVIC_HOOK_ATTR at the hook. Nothing
+# in tests/ needs it.
